@@ -16,4 +16,16 @@ void draw() {
     for (int i = 0 ; i < balls.length ; i++) {
       balls[i].draw(); 
     }
+    float Mx = 0;
+    float My = 0;
+    if (mousePressed) {
+      Mx = mouseX;
+      My = mouseY;
+      reactionStarted = true;
+    }
+    int size = 1;
+    while (reactionStarted) {
+      ellipse(Mx, My, size, size);  
+      size++;
+    }
 }

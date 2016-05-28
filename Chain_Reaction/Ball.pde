@@ -14,8 +14,8 @@ class Ball {
      green = (int)(Math.random() * 255.0);
      if (xv == 0 && yv == 0) {
        //set value in case of 0
-       xv = 0.1;
-       yv = 0.1;
+       xv = 0.05;
+       yv = 0.05;
      }
   }
   

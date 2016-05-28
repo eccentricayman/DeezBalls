@@ -1,17 +1,22 @@
 class Ball {
 
-  int x, y;
-  int xv, yv;
+  float x, y;
+  float xv, yv;
   int red, blue, green;
   
   Ball() {
-     x = (int)(Math.random() * 600.0);
-     y = (int)(Math.random() * 600.0);
-     xv = ((int)(Math.random() * 10.0)) - 5;
-     yv = ((int)(Math.random() * 10.0)) - 5;
+     x = (float)(Math.random() * 600.0);
+     y = (float)(Math.random() * 600.0);
+     xv = ((float)(Math.random() * 10.0)) - 5;
+     yv = ((float)(Math.random() * 10.0)) - 5;
      red = (int)(Math.random() * 255.0);
      blue = (int)(Math.random() * 255.0);
      green = (int)(Math.random() * 255.0);
+     if (xv == 0 && yv == 0) {
+       //set value in case of 0
+       xv = 0.1;
+       yv = 0.1;
+     }
   }
   
   void setX(int newX) {

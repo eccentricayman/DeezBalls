@@ -18,7 +18,7 @@ class Ball {
        yv = 0.05;
      }
   }
-  
+
   void setX(int newX) {
     x = newX;
   }

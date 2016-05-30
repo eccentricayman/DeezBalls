@@ -1,33 +1,44 @@
-Ball[] balls;
+ArrayList<Ball> balls;
 boolean reactionStarted;
 
 void setup() {
   size(600, 600);
   reactionStarted = false;
-  balls = new Ball[25];
-  for (int i = 0 ; i < balls.length ; i++) {
-    balls[i] = new Ball();
+  balls = new ArrayList<Ball>();
+  for (int i = 0 ; i < 25 ; i++) {
+    Ball b = new Ball();
+    balls.add(b);
   }  
-  //balls[0].state = Ball.DEAD;
+  //balls.get.(0).state = Ball.DEAD;
 }
 
 void draw() {
   background(1);
-  for (int i = 0 ; i < balls.length ; i++) {
-    balls[i].draw(); 
+  for (int i = 0 ; i < balls.size() ; i++) {
+    balls.get(i).draw(); 
   }
-  float Mx;
-  float My;
-  float sz;
-  if (mousePressed && !(reactionStarted)) {
-    Mx = mouseX;
-    My = mouseY;
-    sz = 1;
+  
+  if (mousePressed & !reactionStarted) {
+    Ball b = new Ball();
+    b.setX( mouseX );
+    b.setY( mouseY );
+    b.react();
+    balls.add(b);
     reactionStarted = true;
   }
-  if (reactionStarted) {
-    ellipse(Mx, My, sz, sz);
-    sz++;
+  
+  else if (balls.get(balls.size() - 1).getSize() == 0){
+    reactionStarted = false;
+  }
+  
+  for (int i = 0 ; i < balls.size() ; i++) {
+    for (int j = 0; j < balls.size(); j++) {
+      if( ! balls.get(i).getReaction() && balls.get(j).getReaction() ){
+        if( balls.get(i).getX() > ( balls.get(j).getX() - (balls.get(j).getSize() / 2) ) && balls.get(i).getX() < ( balls.get(j).getX() + (balls.get(j).getSize() / 2) ) && balls.get(i).getY() > ( balls.get(j).getY() - (balls.get(j).getSize() / 2) ) && balls.get(i).getY() < ( balls.get(j).getY() + (balls.get(j).getSize() / 2) ) ){
+          balls.get(i).react();
+        }
+      }
+    }
   }
 
 }

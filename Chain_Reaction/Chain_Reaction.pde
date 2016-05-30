@@ -1,3 +1,8 @@
+/* Teeam -- Adam McKoy, Ayman Ahmed, Derek Lin
+  APCS2 pd5
+  HW47 -- All That Bouncin'
+  2016-05-31 */
+
 ArrayList<Ball> balls;
 boolean reactionStarted;
 

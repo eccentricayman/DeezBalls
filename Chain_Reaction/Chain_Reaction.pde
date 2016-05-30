@@ -14,7 +14,6 @@ void setup() {
     Ball b = new Ball();
     balls.add(b);
   }  
-  //balls.get.(0).state = Ball.DEAD;
 }
 
 void draw() {

@@ -17,7 +17,7 @@ void setup() {
 }
 
 void draw() {
-  background(1);
+  background(255, 255, 255);
   for (int i = 0 ; i < balls.size() ; i++) {
     balls.get(i).draw(); 
   }
@@ -35,10 +35,19 @@ void draw() {
     reactionStarted = false;
   }
   
+  if (mousePressed){
+    for (int i = 0 ; i < balls.size() ; i++) {
+      if (balls.get(i).getReaction() && balls.get(i).getSize() > 0) {
+        fill(255, 0, 0, 45);
+        rect(balls.get(i).getX() - (balls.get(i).getSize() / 2), balls.get(i).getY() - (balls.get(i).getSize() / 2), balls.get(i).getSize(), balls.get(i).getSize());
+      }
+    }
+  }
+  
   for (int i = 0 ; i < balls.size() ; i++) {
     for (int j = 0; j < balls.size(); j++) {
       if( ! balls.get(i).getReaction() && balls.get(j).getReaction() ){
-        if( balls.get(i).getX() > ( balls.get(j).getX() - (balls.get(j).getSize() / 2) ) && balls.get(i).getX() < ( balls.get(j).getX() + (balls.get(j).getSize() / 2) ) && balls.get(i).getY() > ( balls.get(j).getY() - (balls.get(j).getSize() / 2) ) && balls.get(i).getY() < ( balls.get(j).getY() + (balls.get(j).getSize() / 2) ) ){
+        if( balls.get(i).getX() >= ( balls.get(j).getX() - (balls.get(j).getSize() / 2) ) && balls.get(i).getX() <= ( balls.get(j).getX() + (balls.get(j).getSize() / 2) ) && balls.get(i).getY() >= ( balls.get(j).getY() - (balls.get(j).getSize() / 2) ) && balls.get(i).getY() <= ( balls.get(j).getY() + (balls.get(j).getSize() / 2) ) ){
           balls.get(i).react();
         }
       }

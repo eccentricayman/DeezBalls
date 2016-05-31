@@ -74,6 +74,7 @@ class Ball {
   }
   
   void draw() {
+    fill(red, blue, green);
     if( reaction ){
       if( grow ){
         if( size > 200 ){
@@ -93,7 +94,6 @@ class Ball {
     else{
       ellipse(x, y, size, size);
     }
-    fill(red, blue, green);
     x += xv;
     y += yv;
     if (x >= 600 || x <= 0) {
